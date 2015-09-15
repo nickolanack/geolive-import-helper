@@ -11,17 +11,24 @@ Core::LoadPlugin('Attributes');
 
 print_r(EasyCsv::GetHeader($csv));
 
-foreach (array_diff(EasyCsv::GetHeader($csv), array(
-    'id',
-    'Name',
-    'LAT_Y',
-    'LONG_X'
-)) as $field) {
-    echo $field;
-    $u = EasyCsv::DistinctValues($csv, $field);
-    sort($u);
-    print_r($u);
-}
+// foreach (array_diff(EasyCsv::GetHeader($csv), array(
+// 'id',
+// 'Name',
+// 'LAT_Y',
+// 'LONG_X',
+// 'What happened?'
+// )) as $field) {
+// echo $field;
+// $u = EasyCsv::DistinctValues($csv, $field);
+// sort($u);
+// print_r($u);
+// }
+
+// $icons = EasyCsv::DistinctValues($csv, 'Icon');
+
+// sort($icons);
+// print_r($icons);
+
 $tableMetadata = AttributesTable::GetMetadata('newsAttributes');
 
 EasyCsv::IterateRows_Assoc($csv, 
