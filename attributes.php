@@ -35,15 +35,15 @@ EasyCsv::IterateRows_Assoc($csv,
     function ($row) use($tableMetadata) {
         
         $marker = MapController::GetFeatureWithName($row['Name']);
-        if (! $marker) {
+        if (!$marker) {
             echo 'no marker for row: ' . print_r($row, true);
         }
         
         $urls = array();
-        if (! empty($row['Source 1'])) {
+        if (!empty($row['Source 1'])) {
             $urls[] = $row['Source 1'];
         }
-        if (! empty($row['Source 2'])) {
+        if (!empty($row['Source 2'])) {
             $urls[] = $row['Source 2'];
         }
         
@@ -54,6 +54,7 @@ EasyCsv::IterateRows_Assoc($csv,
             'transitionType' => $row['Transition'],
             'transitionDate' => date('Y-m-d', $date),
             'owner' => $row['Ownership'],
+            'community' => $row['Town'],
             'url' => $urls
         );
         
