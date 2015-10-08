@@ -30,7 +30,7 @@ $layerMap = array(
 );
 
 if (!EasyCsv::DistinctValues($csv, 'Name')) {
-    throw new Exception('Expected \'Name\' field to contain unique values');
+    die('Expected \'Name\' field to contain unique values');
 }
 
 EasyCsv::IterateRows_Assoc($csv, 
@@ -57,7 +57,7 @@ EasyCsv::IterateRows_Assoc($csv,
             
             // MapController::StoreMapFeature($marker);
         } else {
-            throw new Exception('Unknown value in \'Type of News\': ' . $row['Type of news']);
+            die('Unknown value in \'Type of News\': ' . $row['Type of news']);
         }
     });
 ?>

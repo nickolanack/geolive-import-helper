@@ -55,8 +55,11 @@ EasyCsv::IterateRows_Assoc($csv,
             'transitionDate' => date('Y-m-d', $date),
             'owner' => $row['Ownership'],
             'community' => $row['Town'],
-            'url' => $urls
+            'url' => $urls,
+            'language' => $row['Language']
         );
+        
+        echo 'Attributes: ' . print_r(json_encode($attributes, JSON_PRETTY_PRINT)) . "\n";
         
         // AttributesRecord::Set($marker->getId(), $marker->getType(), $attributes, $tableMetadata);
     });

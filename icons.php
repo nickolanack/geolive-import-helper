@@ -38,7 +38,7 @@ $iconMap = array(
     'community paper : decrease in service' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_k1v_esb_cE_[ImAgE].png',
     'community paper : increase in service' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_Drp_yoW_[ImAgE]_bO8.png',
     'community paper : new' => 'components/com_geolive/users_files/user_files_400/Uploads/MzA_[G]_[ImAgE]_itZ_37m.png',
-    'community paper : new due to merger' => 'components/com_geolive/users_files/user_files_400/Uploads/Ffw_[G]_WO_A9_[ImAgE].png',
+    'community paper : new outlet produced by merger' => 'components/com_geolive/users_files/user_files_400/Uploads/Ffw_[G]_WO_A9_[ImAgE].png',
     'community paper : shifted to online' => 'components/com_geolive/users_files/user_files_400/Uploads/A5b_[G]_PTW_[ImAgE]_jjt.png',
     'daily paper - free : closed' => 'components/com_geolive/users_files/user_files_400/Uploads/ESs_jwW_3d_[G]_[ImAgE].png',
     'daily paper - free : new' => 'components/com_geolive/users_files/user_files_400/Uploads/qIw_uFv_[G]_bsm_[ImAgE].png',
@@ -46,7 +46,7 @@ $iconMap = array(
     'daily paper - paid : closed due to merger' => 'components/com_geolive/users_files/user_files_400/Uploads/Rs8_[G]_LGP_[ImAgE]_cQ5.png',
     'daily paper - paid : decrease in service' => 'components/com_geolive/users_files/user_files_400/Uploads/[ImAgE]_[G]_mYW_wsV_Jte.png',
     'daily paper - paid : new' => 'components/com_geolive/users_files/user_files_400/Uploads/[ImAgE]_[G]_UWx_N5D_OhI.png',
-    'daily paper - paid : new due to merger' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_ytA_531_[ImAgE]_04.png',
+    'daily paper - paid : new outlet produced by merger' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_ytA_531_[ImAgE]_04.png',
     'daily paper - paid : daily becomes a community paper' => 'components/com_geolive/users_files/user_files_400/Uploads/PYa_[ImAgE]_kk8_[G]_lV6.png',
     'online : closed' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_L9q_GPZ_[ImAgE]_CSi.png',
     'online : new' => 'components/com_geolive/users_files/user_files_400/Uploads/[G]_Qrd_6BY_[ImAgE]_FYG.png',
@@ -73,6 +73,8 @@ foreach ($iconMap as $name => $icon) {
     echo '<div>' . $name . '=><img src="../' . $icon . '"/></div>';
 }
 
+echo "\n\n" . '   var iconSetMap=' . htmlspecialchars(json_encode($iconMap, JSON_PRETTY_PRINT)) . "\n\n";
+
 $tableMetadata = AttributesTable::GetMetadata('newsAttributes');
 
 EasyCsv::IterateRows_Assoc($csv, 
@@ -87,13 +89,13 @@ EasyCsv::IterateRows_Assoc($csv,
             if (key_exists($iconKey, $iconMap)) {
                 if ($marker->getIcon() != $iconMap[$iconKey]) {
                     $marker->setIcon($iconMap[$iconKey]);
-                    MapController::StoreMapFeature($marker);
+                    // MapController::StoreMapFeature($marker);
                 }
             } else {
-                throw new Exception('missing key for: ' . $iconKey . ' | ' . $row['Name']);
+                die('missing key for: ' . $iconKey . ' | ' . $row['Name']);
             }
         } else {
-            throw error('missiong marker for: ' . $row["Name"]);
+            die('missing marker for: ' . $row["Name"]);
         }
     });
 
