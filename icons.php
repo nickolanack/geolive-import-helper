@@ -50,8 +50,8 @@ $iconMap = array(
     
     'daily paper - free : closed' => 'components/com_geolive/users_files/user_files_400/Uploads/ESs_jwW_3d_[G]_[ImAgE].png',
     'daily paper - free : new' => 'components/com_geolive/users_files/user_files_400/Uploads/qIw_uFv_[G]_bsm_[ImAgE].png',
-    'daily paper : increase in service' => 'components/com_geolive/users_files/user_files_400/Uploads/Xfp_DTl_[G]_avi_[ImAgE].png',
-    'daily paper : decrease in service' => 'components/com_geolive/users_files/user_files_400/Uploads/[ImAgE]_zrH_oVI_BtL_[G].png',
+    'daily paper - free : increase in service' => 'components/com_geolive/users_files/user_files_400/Uploads/Xfp_DTl_[G]_avi_[ImAgE].png',
+    'daily paper - free : decrease in service' => 'components/com_geolive/users_files/user_files_400/Uploads/[ImAgE]_zrH_oVI_BtL_[G].png',
     'daily paper - free : daily becomes a community paper' => 'components/com_geolive/users_files/user_files_400/Uploads/nPT_[ImAgE]_[G]_HnR_1gp.png',
     
     'daily paper - paid : closed' => 'components/com_geolive/users_files/user_files_400/Uploads/95V_k0J_[ImAgE]_EWi_[G].png',
