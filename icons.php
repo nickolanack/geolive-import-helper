@@ -103,6 +103,7 @@ EasyCsv::IterateRows_Assoc($csv,
     function ($row) use($tableMetadata, $iconMap) {
         
         $iconKey = trim($row['0']);
+        $iconKey=str_replace('  ', ' ', $iconKey);
         
         $marker = MapController::GetFeatureWithName($row['Name']);
         
