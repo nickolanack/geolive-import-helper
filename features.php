@@ -25,6 +25,7 @@ $layerMap = array(
     'daily paper - paid' => 1,
     'online' => 4,
     'TV - private' => 3,
+    'TV - public' => 3,
     'radio - public' => 2,
     'radio - private' => 2
 );
@@ -35,8 +36,11 @@ if (!EasyCsv::DistinctValues($csv, 'Name')) {
 
 EasyCsv::IterateRows_Assoc($csv, 
     function ($row) use($layerMap, $ShowNew, $ShowExisting) {
+
+        //$typeOfNews=$row['Type of news'];
+        $typeOfNews=trim(array_shift(explode(':',$row['0'])));
         
-        if (key_exists($row['Type of news'], $layerMap)) {
+        if (key_exists($typeOfNews, $layerMap)) {
             
             if (MapController::GetFeatureWithName($row['Name'])) {
                 if ($ShowSkipped) {
@@ -49,7 +53,7 @@ EasyCsv::IterateRows_Assoc($csv,
             $marker->setCoordinates($row['LAT_Y'], $row['LONG_X'])
                 ->setName($row['Name'])
                 ->setDescription($row['What happened?'])
-                ->setLayerId($layerMap[$row['Type of news']]);
+                ->setLayerId($layerMap[$typeOfNews]);
             
             if ($ShowNew) {
                 echo 'New Marker: ' . print_r(json_encode($marker->getMetadata(), JSON_PRETTY_PRINT)) . "\n";
@@ -57,7 +61,7 @@ EasyCsv::IterateRows_Assoc($csv,
             
             // MapController::StoreMapFeature($marker);
         } else {
-            die('Unknown value in \'Type of News\': ' . $row['Type of news']);
+            die('Unknown value in \'Type of News\': ' . $typeOfNews);
         }
     });
 ?>
